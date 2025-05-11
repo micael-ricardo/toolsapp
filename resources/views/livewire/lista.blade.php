@@ -20,6 +20,12 @@
             </div>
         </div>
 
+        <div wire:loading class="text-center my-3">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Carregando...</span>
+            </div>
+        </div>
+
         <div class="overflow-auto" style="height: 450px;">
             <table class="table table-sm table-striped table-bordered">
                 <thead class="table-dark">

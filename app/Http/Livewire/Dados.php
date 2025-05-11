@@ -28,7 +28,7 @@ class Dados extends Component
         }
     }
 
-        public function render()
+    public function render()
     {
         return view('livewire.dados');
     }
@@ -39,12 +39,23 @@ class Dados extends Component
 
         if ($this->ferramenta) {
             $this->ferramenta->update($dados);
+
+            $this->dispatchBrowserEvent('mensagem', [
+                'tipo' => 'success',
+                'texto' => 'Ferramenta editada com sucesso.'
+            ]);
+
         } else {
             Ferramenta::create($dados);
+
+            $this->dispatchBrowserEvent('mensagem', [
+                'tipo' => 'success',
+                'texto' => 'Ferramenta Cadastrada com sucesso.'
+            ]);
         }
 
         $this->dispatchBrowserEvent('closeModal');
-        $this->emitUp('render'); 
+        $this->emitUp('render');
         $this->reset();
     }
 
