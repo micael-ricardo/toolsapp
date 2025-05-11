@@ -7,6 +7,14 @@
         </div>
 
         <div>
+            <select class="form-select" wire:model="status">
+                <option value="todos">Todos os Status</option>
+                <option value="Ativa">Ativa</option>
+                <option value="Inativa">Inativa</option>
+            </select>
+        </div>
+
+        <div>
             <button class="btn btn-success d-flex align-items-center" wire:click="$emit('abrirModalCriar')" title="Cadastrar nova ferramenta">
                 <i class="bi bi-plus-lg me-2"></i> Nova Ferramenta
             </button>

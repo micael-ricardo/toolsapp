@@ -10,6 +10,8 @@ class Lista extends Component
 {
     use WithPagination;
     public $search = '';
+
+    public $status = 'todos';
     public $ferramentaSelecionada = null;
     public $perPage = 10;
 
@@ -21,16 +23,26 @@ class Lista extends Component
     public function render()
     {
 
-        $ferramentas = Ferramenta::where('nome', 'like', '%' . $this->search . '%')
-            ->orderBy('nome')
-            ->paginate($this->perPage);
+        $query = Ferramenta::query();
+
+        if ($this->search) {
+            $query->where('nome', 'like', '%' . $this->search . '%');
+        }
+
+        if ($this->status !== 'todos') {
+            $query->where('status', $this->status);
+        }
 
         return view('livewire.lista', [
-            'ferramentas' => $ferramentas
+            'ferramentas' => $query->orderBy('nome')->paginate($this->perPage),
         ]);
-
     }
     public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+       public function updatingStatus()
     {
         $this->resetPage();
     }
