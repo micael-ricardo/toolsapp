@@ -1,36 +1,40 @@
 <div class="container mt-4">
     <button class="btn btn-success mb-3" wire:click="$emit('abrirModalCriar')" title="Cadastrar Ferramenta"><i class="bi bi-plus-lg"></i></button>
-    <table class="table table-sm table-striped table-bordered">
-        <thead class="table-dark">
-            <tr>
-                <th class="fw-semibold text-nowrap text-center">Nome</th>
-                <th class="fw-semibold text-nowrap text-center">Versão</th>
-                <th class="fw-semibold text-nowrap text-center">Status</th>
-                <th class="fw-semibold text-nowrap text-center">Path</th>
-                <th class="fw-semibold text-nowrap text-center">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($ferramentas as $ferramenta)
-            <tr>
-                <td>{{ $ferramenta->nome }}</td>
-                <td class="text-center" >{{ $ferramenta->versao }}</td>
-               <td class="text-center">
-                    <span class="badge rounded-pill {{ $ferramenta->status ? 'bg-success' : 'bg-danger' }}">
-                        {{ $ferramenta->status ? 'Ativo' : 'Inativo' }}
-                    </span>
-                </td>
-                <td>{{ $ferramenta->path  }}</td>
-                <td class="text-center">
-                    <button class="btn btn-primary btn-sm" wire:click="$emit('abrirModalEditar', {{ $ferramenta->id }})"> <i class="bi bi-pencil-square"></i></button>
-                    <button wire:click="delete({{ $ferramenta->id }})" class="btn btn-danger btn-sm">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+
+    <div class="overflow-auto" style="height: 450px;">
+        <table class="table table-sm table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th class="fw-semibold text-nowrap text-center">Nome</th>
+                    <th class="fw-semibold text-nowrap text-center">Versão</th>
+                    <th class="fw-semibold text-nowrap text-center">Status</th>
+                    <th class="fw-semibold text-nowrap text-center">Path</th>
+                    <th class="fw-semibold text-nowrap text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($ferramentas as $ferramenta)
+                <tr>
+                    <td>{{ $ferramenta->nome }}</td>
+                    <td class="text-center">{{ $ferramenta->versao }}</td>
+                    <td class="text-center">
+                        <span class="badge rounded-pill {{ $ferramenta->status ? 'bg-success' : 'bg-danger' }}">
+                            {{ $ferramenta->status ? 'Ativo' : 'Inativo' }}
+                        </span>
+                    </td>
+                    <td>{{ $ferramenta->path  }}</td>
+                    <td class="text-center">
+                        <button class="btn btn-primary btn-sm" wire:click="$emit('abrirModalEditar', {{ $ferramenta->id }})"> <i class="bi bi-pencil-square"></i></button>
+                        <button wire:click="delete({{ $ferramenta->id }})" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
     <div class="row mt-4 align-items-center">
         <div class="col-md-4">
             <div class="d-flex align-items-center">

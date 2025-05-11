@@ -15,15 +15,20 @@ class Lista extends Component
     protected $listeners = ['abrirModalCriar' => 'criar', 'abrirModalEditar' => 'editar'];
     protected $paginationTheme = 'bootstrap';
 
-    
-        public function render()
+
+    public function render()
     {
-           return view('livewire.lista', [
-            'ferramentas' => Ferramenta::orderBy('nome') 
-                ->paginate($this->perPage) 
+        return view('livewire.lista', [
+            'ferramentas' => Ferramenta::orderBy('nome')
+                ->paginate($this->perPage)
         ]);
     }
-    
+
+    public function updatingPerPage()
+    {
+        $this->resetPage();
+    }
+
     public function criar()
     {
         $this->ferramentaSelecionada = null;
