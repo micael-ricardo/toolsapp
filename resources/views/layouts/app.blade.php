@@ -8,15 +8,18 @@
     @livewireStyles
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="#">Ferramentas</a>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+        <div class="d-flex justify-content-center w-100">
+            <h1 class="navbar-brand">Ferramentas</h1>
         </div>
-    </nav>
+    </div>
+  </nav>
 
-    <main class="container">
-        @yield('content')
-    </main>
+     <div class="container">
+        {{ $slot }}
+     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     @livewireScripts
 </body>
