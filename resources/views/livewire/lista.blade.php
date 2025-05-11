@@ -28,6 +28,10 @@
             </tbody>
         </table>
 
+        <div class="d-flex justify-content-center mt-4">
+    {{ $ferramentas->links() }}
+</div>
+
     @livewire('dados', ['ferramenta' => $ferramentaSelecionada], key(optional($ferramentaSelecionada)->id ?? 'nova'))
 </div>
 
