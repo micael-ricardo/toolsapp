@@ -10,13 +10,12 @@ class Lista extends Component
 {
     use WithPagination;
     public $search = '';
-
     public $status = 'todos';
     public $ferramentaSelecionada = null;
     public $perPage = 10;
-
     protected $listeners = ['abrirModalCriar' => 'criar', 'abrirModalEditar' => 'editar'];
     protected $paginationTheme = 'bootstrap';
+    public $ferramentaParaDeletarNome = '';
 
 
 
@@ -42,7 +41,7 @@ class Lista extends Component
         $this->resetPage();
     }
 
-       public function updatingStatus()
+    public function updatingStatus()
     {
         $this->resetPage();
     }
@@ -66,10 +65,14 @@ class Lista extends Component
 
 
     public function deleteModal($id)
-{
-    $this->ferramentaParaDeletarId = $id;
-    $this->dispatchBrowserEvent('abrirDeleteModal');
-}
+    {
+        $ferramenta = Ferramenta::find($id);
+        $this->ferramentaParaDeletarId = $id;
+        $this->ferramentaParaDeletarNome = $ferramenta?->nome ?? '';
+
+        //dd($this->ferramentaParaDeletarNome);
+        $this->dispatchBrowserEvent('abrirDeleteModal');
+    }
 
 
 }

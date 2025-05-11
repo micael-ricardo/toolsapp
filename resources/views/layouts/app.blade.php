@@ -39,6 +39,11 @@
             modal.show();
         });
 
+        window.addEventListener('fecharDeleteModal', () => {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('DeleteModal'));
+            if (modal) modal.hide();
+        });
+
     </script>
 
 </body>

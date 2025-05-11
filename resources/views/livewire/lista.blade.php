@@ -72,30 +72,31 @@
             </div>
         </div>
         @livewire('dados', ['ferramenta' => $ferramentaSelecionada], key(optional($ferramentaSelecionada)->id ?? 'nova'))
-    </div>
 
-    <div wire:ignore.self class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="ferramentaModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <form wire:submit.prevent="salvar" class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ferramentaModalLabel">
-                        {{ $ferramenta ? 'Editar Ferramenta' : 'Nova Ferramenta' }}
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    Quer deletar mesmo?
+        <div wire:ignore.self class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Excluir</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza que deseja deletar a ferramenta <strong>{{ $ferramentaParaDeletarNome }}</strong>?
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-
-                        <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">
-                            <span wire:loading.remove>Salvar</span>
+                        <button wire:click="deletarConfirmado" type="button" class="btn btn-danger" wire:loading.attr="disabled">
+                            <span wire:loading.remove>Deletar</span>
                             <span wire:loading>
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                Salvando...
+                                Deletando...
                             </span>
                         </button>
                     </div>
-            </form>
+                </div>
+            </div>
         </div>
+
+
+
     </div>
