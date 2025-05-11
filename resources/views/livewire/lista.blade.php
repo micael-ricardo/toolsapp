@@ -1,9 +1,17 @@
 <div class="container mt-4">
-    <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Buscar por nome..." wire:model.debounce.500ms="search">
-    </div>
 
-    <button class="btn btn-success mb-3" wire:click="$emit('abrirModalCriar')" title="Cadastrar Ferramenta"><i class="bi bi-plus-lg"></i></button>
+
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+        <div class="flex-grow-1">
+            <input type="text" class="form-control" placeholder="Buscar por nome..." wire:model.debounce.500ms="search">
+        </div>
+
+        <div>
+            <button class="btn btn-success d-flex align-items-center" wire:click="$emit('abrirModalCriar')" title="Cadastrar nova ferramenta">
+                <i class="bi bi-plus-lg me-2"></i> Nova Ferramenta
+            </button>
+        </div>
+    </div>
 
     <div class="overflow-auto" style="height: 450px;">
         <table class="table table-sm table-striped table-bordered">
