@@ -64,5 +64,13 @@ class Lista extends Component
         $this->dispatchBrowserEvent('abrirModal');
     }
 
+
+    public function deleteModal($id)
+{
+    $this->ferramentaParaDeletarId = $id;
+    $this->dispatchBrowserEvent('abrirDeleteModal');
+}
+
+
 }
 

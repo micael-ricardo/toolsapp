@@ -47,10 +47,3 @@
     </div>
 </div>
 
-<script>
-    window.addEventListener('closeModal', () => {
-        const modal = bootstrap.Modal.getInstance(document.getElementById('ferramentaModal'));
-        modal.hide();
-    });
-
-</script>
