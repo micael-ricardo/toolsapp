@@ -19,6 +19,8 @@
     </nav>
 
     <div class="container">
+    <div id="mensagem-livewire" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
         {{ $slot }}
     </div>
 
@@ -42,6 +44,27 @@
         window.addEventListener('fecharDeleteModal', () => {
             const modal = bootstrap.Modal.getInstance(document.getElementById('DeleteModal'));
             if (modal) modal.hide();
+        });
+
+
+        window.addEventListener('mensagem', event => {
+            const tipo = event.detail.tipo || 'info';
+            const texto = event.detail.texto || 'Mensagem';
+
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${tipo} alert-dismissible fade show`;
+            alert.role = 'alert';
+            alert.innerHTML = `
+            ${texto}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button> `;
+
+            const container = document.getElementById('mensagem-livewire');
+            container.innerHTML = '';
+            container.appendChild(alert);
+
+            setTimeout(() => {
+                alert.classList.remove('show');
+            }, 5000);
         });
 
     </script>

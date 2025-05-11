@@ -81,7 +81,12 @@ class Lista extends Component
 
         if ($ferramenta) {
             $ferramenta->delete();
-            session()->flash('message', 'Ferramenta deletada com sucesso.');
+
+            $this->dispatchBrowserEvent('mensagem', [
+                'tipo' => 'success',
+                'texto' => 'Ferramenta deletada com sucesso.'
+            ]);
+
         }
 
         $this->ferramentaParaDeletarId = null;
