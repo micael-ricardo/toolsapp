@@ -45,6 +45,7 @@ class Dados extends Component
 
         $this->dispatchBrowserEvent('closeModal');
         $this->emitUp('render'); 
+        $this->reset();
     }
 
 }

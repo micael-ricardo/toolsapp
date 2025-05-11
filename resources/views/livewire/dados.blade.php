@@ -34,7 +34,14 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Salvar</button>
+
+                <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">
+                    <span wire:loading.remove>Salvar</span>
+                    <span wire:loading>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Salvando...
+                    </span>
+                </button>
             </div>
         </form>
     </div>
@@ -45,4 +52,5 @@
         const modal = bootstrap.Modal.getInstance(document.getElementById('ferramentaModal'));
         modal.hide();
     });
+
 </script>
