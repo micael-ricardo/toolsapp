@@ -28,6 +28,11 @@ class Dados extends Component
         }
     }
 
+        public function render()
+    {
+        return view('livewire.dados');
+    }
+
     public function salvar()
     {
         $dados = $this->validate();
@@ -42,8 +47,4 @@ class Dados extends Component
         $this->emitUp('render'); 
     }
 
-    public function render()
-    {
-        return view('livewire.dados');
-    }
 }
