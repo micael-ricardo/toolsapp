@@ -16,6 +16,7 @@ class Lista extends Component
     protected $listeners = ['abrirModalCriar' => 'criar', 'abrirModalEditar' => 'editar'];
     protected $paginationTheme = 'bootstrap';
     public $ferramentaParaDeletarNome = '';
+    public $ferramentaParaDeletarId = null;
 
 
 
@@ -74,6 +75,18 @@ class Lista extends Component
         $this->dispatchBrowserEvent('abrirDeleteModal');
     }
 
+    public function deletarConfirmado()
+    {
+        $ferramenta = Ferramenta::find($this->ferramentaParaDeletarId);
+
+        if ($ferramenta) {
+            $ferramenta->delete();
+            session()->flash('message', 'Ferramenta deletada com sucesso.');
+        }
+
+        $this->ferramentaParaDeletarId = null;
+        $this->dispatchBrowserEvent('fecharDeleteModal');
+    }
 
 }
 
