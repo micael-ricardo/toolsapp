@@ -36,11 +36,14 @@
                     <tr wire:key="ferramenta-{{ $ferramenta->id }}">
                         <td>{{ $ferramenta->nome }}</td>
                         <td class="text-center">{{ $ferramenta->versao }}</td>
+
                         <td class="text-center">
-                            <span class="badge rounded-pill {{ $ferramenta->status ? 'bg-success' : 'bg-danger' }}">
-                                {{ $ferramenta->status ? 'Ativo' : 'Inativo' }}
+                            <span class="badge rounded-pill {{ $ferramenta->status === 'Ativa' ? 'bg-success' : 'bg-danger' }}">
+                                {{ $ferramenta->status === 'Ativa' ? 'Ativo' : 'Inativo' }}
                             </span>
                         </td>
+
+
                         <td>{{ $ferramenta->path  }}</td>
                         <td class="text-center">
                             <button class="btn btn-primary btn-sm" wire:click="$emit('abrirModalEditar', {{ $ferramenta->id }})"> <i class="bi bi-pencil-square"></i></button>
@@ -96,7 +99,4 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
