@@ -4,6 +4,7 @@
                     <th>Nome</th>
                     <th>Versão</th>
                     <th>Status</th>
+                    <th>Path</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -13,6 +14,7 @@
                         <td>{{ $ferramenta->nome }}</td>
                         <td>{{ $ferramenta->versao }}</td>
                         <td>{{ $ferramenta->status }}</td>
+                        <td>{{ $ferramenta->Path }}</td>
                         <td>
                         </td>
                     </tr>
