@@ -7,13 +7,27 @@ use App\Models\Ferramenta;
 
 class Lista extends Component
 {
-    public $search = '';
-    
+    public $ferramentaSelecionada = null;
+
+    protected $listeners = ['abrirModalCriar' => 'criar', 'abrirModalEditar' => 'editar'];
+
+    public function criar()
+    {
+        $this->ferramentaSelecionada = null;
+        $this->dispatchBrowserEvent('abrirModal');
+    }
+
+    public function editar($id)
+    {
+        $this->ferramentaSelecionada = Ferramenta::findOrFail($id);
+        $this->dispatchBrowserEvent('abrirModal');
+    }
+
     public function render()
     {
-        
-           $ferramentas = Ferramenta::get();
-
-            return view('livewire.lista', ['ferramentas' => $ferramentas]);
+        return view('livewire.lista', [
+            'ferramentas' => Ferramenta::all(),
+        ]);
     }
 }
+

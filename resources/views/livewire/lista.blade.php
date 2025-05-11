@@ -1,7 +1,5 @@
-    <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#ferramentaModal" wire:click="resetInputFields">
-        Cadastrar Ferramenta
-    </button>
-
+<div class="container mt-4">
+<button class="btn btn-success mb-3" wire:click="$emit('abrirModalCriar')" title="Cadastrar Ferramenta"><i class="bi bi-plus-lg"></i></button>
  <table class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -20,9 +18,7 @@
                         <td>{{ $ferramenta->status }}</td>
                         <td>{{ $ferramenta->path  }}</td>
                         <td>
-                        <button wire:click="edit({{ $ferramenta->id }})" class="btn btn-primary btn-sm">
-                            <i class="bi bi-pencil"></i>
-                        </button>
+                         <button class="btn btn-primary btn-sm" wire:click="$emit('abrirModalEditar', {{ $ferramenta->id }})"> <i class="bi bi-pencil-square"></i></button>
                         <button wire:click="delete({{ $ferramenta->id }})" class="btn btn-danger btn-sm">
                             <i class="bi bi-trash"></i>
                         </button>
@@ -31,3 +27,15 @@
                 @endforeach
             </tbody>
         </table>
+
+    @livewire('dados', ['ferramenta' => $ferramentaSelecionada], key(optional($ferramentaSelecionada)->id ?? 'nova'))
+</div>
+
+<script>
+    window.addEventListener('abrirModal', () => {
+        const modal = new bootstrap.Modal(document.getElementById('ferramentaModal'));
+        modal.show();
+    });
+</script>
+
+        
