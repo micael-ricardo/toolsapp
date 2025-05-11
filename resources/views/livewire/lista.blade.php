@@ -1,4 +1,8 @@
 <div class="container mt-4">
+    <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Buscar por nome..." wire:model.debounce.500ms="search">
+    </div>
+
     <button class="btn btn-success mb-3" wire:click="$emit('abrirModalCriar')" title="Cadastrar Ferramenta"><i class="bi bi-plus-lg"></i></button>
 
     <div class="overflow-auto" style="height: 450px;">

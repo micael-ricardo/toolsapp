@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 class Lista extends Component
 {
     use WithPagination;
+    public $search = '';
     public $ferramentaSelecionada = null;
     public $perPage = 10;
 
@@ -16,12 +17,22 @@ class Lista extends Component
     protected $paginationTheme = 'bootstrap';
 
 
+
     public function render()
     {
+
+        $ferramentas = Ferramenta::where('nome', 'like', '%' . $this->search . '%')
+            ->orderBy('nome')
+            ->paginate($this->perPage);
+
         return view('livewire.lista', [
-            'ferramentas' => Ferramenta::orderBy('nome')
-                ->paginate($this->perPage)
+            'ferramentas' => $ferramentas
         ]);
+
+    }
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
     public function updatingPerPage()
