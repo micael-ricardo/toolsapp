@@ -1,6 +1,5 @@
 <div class="container mt-4">
 
-
     <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
         <div class="flex-grow-1">
             <input type="text" class="form-control" placeholder="Buscar por nome..." wire:model.debounce.500ms="search">
@@ -34,7 +33,7 @@
             </thead>
             <tbody>
                 @foreach ($ferramentas as $ferramenta)
-                <tr>
+               <tr wire:key="ferramenta-{{ $ferramenta->id }}">
                     <td>{{ $ferramenta->nome }}</td>
                     <td class="text-center">{{ $ferramenta->versao }}</td>
                     <td class="text-center">
