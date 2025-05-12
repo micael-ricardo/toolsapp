@@ -13,10 +13,12 @@ class Lista extends Component
     public $status = 'todos';
     public $ferramentaSelecionada = null;
     public $perPage = 10;
-    protected $listeners = ['abrirModalCriar' => 'criar', 'abrirModalEditar' => 'editar'];
+    protected $listeners = ['abrirModalCriar' => 'criar', 'abrirModalEditar' => 'editar',  'render' => 'render',];
     protected $paginationTheme = 'bootstrap';
     public $ferramentaParaDeletarNome = '';
     public $ferramentaParaDeletarId = null;
+
+    
 
 
 
