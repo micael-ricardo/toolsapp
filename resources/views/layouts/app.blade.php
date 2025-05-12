@@ -6,6 +6,8 @@
     <title>@yield('title', 'Gerenciador de Ferramentas')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 
     @livewireStyles
 </head>
@@ -19,9 +21,9 @@
     </nav>
 
     <div class="container">
-    
-    <div id="mensagem-livewire" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
-    
+
+        <div id="mensagem-livewire" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
         {{ $slot }}
     </div>
 

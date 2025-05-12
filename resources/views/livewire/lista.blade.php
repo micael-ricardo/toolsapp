@@ -19,10 +19,10 @@
                 </button>
             </div>
         </div>
-
-        <div wire:loading class="text-center my-3">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Carregando...</span>
+        <div wire:loading class="position-absolute top-0 start-0 w-100 h-100 bg-white bg-opacity-75" style="z-index: 10;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_usmfx6bp.json" background="transparent" speed="1" style="width: 100px; height: 100px;" loop autoplay>
+                </lottie-player>
             </div>
         </div>
 
