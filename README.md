@@ -58,8 +58,16 @@ Clonar Repositório:
 git clone https://github.com/micael-ricardo/toolsapp.git  
 cd Toolsapp
 
-# Garanta que o Docker Desktop está RODANDO
+### Garanta que o Docker Desktop está RODANDO
 docker-compose up -d
+
+### Rode a Migrate
+docker ps   
+Para validar os nomes dos containers se for laravel-sqlsrv
+docker exec -it laravel-sqlsrv php artisan migrate
+
+### Rode as seeds para popular a tabela 
+docker exec -it laravel-sqlsrv php artisan db:seed
 
 
 
