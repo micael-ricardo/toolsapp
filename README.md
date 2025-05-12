@@ -28,7 +28,7 @@ Git Bash
 
 ## 🚀 Instalação
 
-### Habilite o WSL 2 (uma única vez)   
+### Habilite o WSL 2   
 wsl --install -d Ubuntu-22.04  
 Reinicie o computador após a instalação.  
 
@@ -44,7 +44,7 @@ Vá em: Settings > WSL Integration e habilite o Ubuntu-22.04
 ### 1. Clonar repositório
 
 git clone https://github.com/micael-ricardo/toolsapp.git  
-cd Toolsapp
+cd Toolsapp   
 copy .env.example .env
 
 ### Inicie os containers
@@ -80,56 +80,23 @@ SQL Server 2017+ rodando localmente
 Extensão pdo_sqlsrv habilitada no PHP
 
 2. Instalação
-Clone o projeto
-bash
-Copiar
-Editar
-git clone https://github.com/micael-ricardo/toolsapp.git
-cd toolsapp
-copy .env.example .env
-Instale as dependências PHP
-bash
-Copiar
-Editar
-composer install
-Gere a key da aplicação
-bash
-Copiar
-Editar
-php artisan key:generate
-Configure o .env
-Edite o .env e defina o acesso ao seu SQL Server local:
-
-ini
-Copiar
-Editar
-DB_CONNECTION=sqlsrv
-DB_HOST=127.0.0.1
-DB_PORT=1433
-DB_DATABASE=tools_database
-DB_USERNAME=sa
-DB_PASSWORD=S3nh@F0rte2024
-Crie o banco no SQL Server
-Use o SSMS ou terminal SQL para criar:
-
-sql
-Copiar
-Editar
-CREATE DATABASE tools_database;
-Rode as migrations e seeds
-bash
-Copiar
-Editar
-php artisan migrate
-php artisan db:seed
-Suba o servidor
-bash
-Copiar
-Editar
-php artisan serve
-Acesse: http://127.0.0.1:8000
-
-
+### Clone o projeto  
+git clone https://github.com/micael-ricardo/toolsapp.git  
+cd toolsapp  
+copy .env.example .env  
+### Instale as dependências PHP  
+composer install  
+### Gere a key da aplicação  
+php artisan key:generate   
+### Crie o banco no SQL Server  
+Use o SSMS ou terminal SQL para criar:    
+CREATE DATABASE tools_database;  
+### Rode as migrations e seeds
+php artisan migrate   
+php artisan db:seed   
+### Suba o servidor   
+php artisan serve  
+Acesse: http://127.0.0.1:8000   
 
 
 🛠️ Estrutura do Projeto
