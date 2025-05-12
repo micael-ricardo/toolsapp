@@ -67,7 +67,7 @@ Abra no navegador: http://localhost:8000
 
 
 
-⚙️ Rodando sem Docker (manual)
+## ⚙️ Rodando sem Docker (manual)
 1. Pré-requisitos
 PHP 8.1 ou superior
 
