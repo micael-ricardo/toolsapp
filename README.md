@@ -12,62 +12,123 @@
 - Composer
 
 ## 📦 Requisitos
+Você pode rodar o projeto de duas formas:
 
-Antes de iniciar, verifique se você tem os seguintes requisitos instalados:
+✅ Com Docker (recomendado) — Ambiente isolado e automático  
 
-- [WSL 2](https://learn.microsoft.com/en-us/windows/wsl/install)
-- [Docker Desktop](https://www.docker.com/)
-- Git
+⚙️ Sem Docker — Ambiente local manual  
 
+✅ Rodando com Docker (recomendado)  
+
+### Pré-requisitos
+
+WSL 2  
+Docker Desktop  
+Git Bash    
 
 ## 🚀 Instalação
 
-### Pré-requisitos Obrigatórios
-1. **Habilitar WSL 2**:
-Insira esse comando no wsl:  
+### Habilite o WSL 2 (uma única vez)   
 wsl --install -d Ubuntu-22.04  
-Reinicie o computador após a instalação  
-Instalar Docker Desktop:
-Baixe em docker.com/products/docker-desktop  
-Durante a instalação:  
-Marque "Use WSL 2 instead of Hyper-V"
+Reinicie o computador após a instalação.  
 
-Em Settings → WSL Integration: habilite o Ubuntu-22.04
+Em Settings → WSL Integration: habilite o Ubuntu-22.04  
 
-![alt text](image-2.png)
+### Configure o Docker Desktop  
+Marque: Use WSL 2 instead of Hyper-V
 
-Instalar Git Bash:
+Vá em: Settings > WSL Integration e habilite o Ubuntu-22.04
 
-git-scm.com/download/win
-
-Use todas opções padrão
-
-Passo a Passo
-Iniciar Ambiente WSL:
-
-Abra o Ubuntu 22.04 no Menu Iniciar
-
-Atualize os pacotes:
-
-bash
-sudo apt update && sudo apt upgrade -y
-Clonar Repositório:
+![alt text](image-2.png)  
 
 ### 1. Clonar repositório
 
 git clone https://github.com/micael-ricardo/toolsapp.git  
 cd Toolsapp
+copy .env.example .env
 
-### Garanta que o Docker Desktop está RODANDO
-docker-compose up -d
+### Inicie os containers
+docker-compose up -d  
 
-### Rode a Migrate
-docker ps   
-Para validar os nomes dos containers se for laravel-sqlsrv
-docker exec -it laravel-sqlsrv php artisan migrate
+### Crie o banco de dados manualmente (SQL Server)
 
-### Rode as seeds para popular a tabela 
-docker exec -it laravel-sqlsrv php artisan db:seed
+docker exec -it mssql2017 /bin/bash   
+/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "S3nh@F0rte2024"   
+CREATE DATABASE tools_database;   
+GO   
+exit   
+
+### Rode a Migrate  e seeds
+docker exec -it laravel-sqlsrv php artisan migrate   
+docker exec -it laravel-sqlsrv php artisan db:seed  
+
+### Acesse a aplicação
+Abra no navegador: http://localhost:8000
+
+
+
+⚙️ Rodando sem Docker (manual)
+1. Pré-requisitos
+PHP 8.1 ou superior
+
+Composer
+
+Node.js + NPM (opcional, se quiser compilar assets)
+
+SQL Server 2017+ rodando localmente
+
+Extensão pdo_sqlsrv habilitada no PHP
+
+2. Instalação
+Clone o projeto
+bash
+Copiar
+Editar
+git clone https://github.com/micael-ricardo/toolsapp.git
+cd toolsapp
+copy .env.example .env
+Instale as dependências PHP
+bash
+Copiar
+Editar
+composer install
+Gere a key da aplicação
+bash
+Copiar
+Editar
+php artisan key:generate
+Configure o .env
+Edite o .env e defina o acesso ao seu SQL Server local:
+
+ini
+Copiar
+Editar
+DB_CONNECTION=sqlsrv
+DB_HOST=127.0.0.1
+DB_PORT=1433
+DB_DATABASE=tools_database
+DB_USERNAME=sa
+DB_PASSWORD=S3nh@F0rte2024
+Crie o banco no SQL Server
+Use o SSMS ou terminal SQL para criar:
+
+sql
+Copiar
+Editar
+CREATE DATABASE tools_database;
+Rode as migrations e seeds
+bash
+Copiar
+Editar
+php artisan migrate
+php artisan db:seed
+Suba o servidor
+bash
+Copiar
+Editar
+php artisan serve
+Acesse: http://127.0.0.1:8000
+
 
 
 
