@@ -24,9 +24,11 @@ Antes de iniciar, verifique se você tem os seguintes requisitos instalados:
 
 ### 1. Clonar repositório
 
-git clone https://github.com/micael-ricardo/toolsapp.git
+git clone https://github.com/micael-ricardo/toolsapp.git  
 cd Toolsapp
 
+
+🛠️ Estrutura do Projeto
 
 ![alt text](image-1.png)
 
