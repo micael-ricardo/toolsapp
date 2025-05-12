@@ -17,29 +17,18 @@ Antes de iniciar, verifique se você tem os seguintes requisitos instalados:
 
 - [WSL 2](https://learn.microsoft.com/en-us/windows/wsl/install)
 - [Docker Desktop](https://www.docker.com/)
+- Git
 
 
-## 🛠️ Estrutura do Projeto
+## 🚀 Instalação
 
-app/
-├── Models/
-│ └── Ferramenta.php # Model Eloquent
-├── Http/
-│ └── Livewire/
-│ ├── Lista.php # Lógica da listagem + filtros
-│ └── Dados.php # Formulário CRUD
-database/
-├── migrations/
-│ └── 2024_05_20_000000_create_ferramentas_table.php
-├── seeders/
-│ └── FerramentasSeeder.php # Dados iniciais
-resources/
-└── views/
-├── layouts/
-│ └── app.blade.php # Layout base
-└── livewire/
-├── lista.blade.php # Tabela + filtros
-└── dados.blade.php # Modal de formulário
+### 1. Clonar repositório
+
+git clone https://github.com/micael-ricardo/toolsapp.git
+cd Toolsapp
+
+
+![alt text](image-1.png)
 
 
 
