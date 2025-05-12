@@ -22,10 +22,45 @@ Antes de iniciar, verifique se você tem os seguintes requisitos instalados:
 
 ## 🚀 Instalação
 
+### Pré-requisitos Obrigatórios
+1. **Habilitar WSL 2**:
+Insira esse comando no wsl:  
+wsl --install -d Ubuntu-22.04  
+Reinicie o computador após a instalação  
+Instalar Docker Desktop:
+Baixe em docker.com/products/docker-desktop  
+Durante a instalação:  
+Marque "Use WSL 2 instead of Hyper-V"
+
+Em Settings → WSL Integration: habilite o Ubuntu-22.04
+
+![alt text](image-2.png)
+
+Instalar Git Bash:
+
+git-scm.com/download/win
+
+Use todas opções padrão
+
+Passo a Passo
+Iniciar Ambiente WSL:
+
+Abra o Ubuntu 22.04 no Menu Iniciar
+
+Atualize os pacotes:
+
+bash
+sudo apt update && sudo apt upgrade -y
+Clonar Repositório:
+
 ### 1. Clonar repositório
 
 git clone https://github.com/micael-ricardo/toolsapp.git  
 cd Toolsapp
+
+# Garanta que o Docker Desktop está RODANDO
+docker-compose up -d
+
 
 
 🛠️ Estrutura do Projeto
